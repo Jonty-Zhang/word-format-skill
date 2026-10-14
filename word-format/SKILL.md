@@ -63,6 +63,7 @@ Apply these defaults unless the user or template says otherwise:
 - Chinese hierarchical numbering by default: `一、`, `（一）`, `1.`, `（1）`. Preserve an existing complete numbering system if it is already consistent.
 - Light blue highlight or text color only for genuinely important content, never more than 20% of the document, and never combined with bold.
 - Tables as Word native tables, centered, within margins, with table titles above.
+- Table cell text with 0 spacing before and after. Never add 段后间距 after text inside a table; when building with python-docx, zero it explicitly, because the default template adds 10 pt after every paragraph and cells inherit it.
 - Figures centered, proportional, clear, and paired with captions below.
 - Equations as editable Word equations, not screenshots.
 
@@ -90,6 +91,7 @@ Before final delivery, check the document against `references/word-format-spec.m
 - Page size, margins, fonts, heading levels, paragraph indentation, and line spacing.
 - Whether an extra full-document title was accidentally added.
 - Whether tables, figures, formulas, captions, and page numbers are visible and correctly placed.
+- Whether every paragraph inside a table has 0 spacing before and after.
 - Whether highlights are light blue, restrained, and not bold.
 - Whether there are extra blank pages, excessive empty lines, broken captions, or AI/process wording.
 
@@ -99,6 +101,7 @@ Before final delivery, check the document against `references/word-format-spec.m
 |---------|-----|
 | Adding a full-document title | Do NOT add extra title unless user explicitly requests |
 | Using screenshots for tables/equations | Always use Word native tables and editable equations |
+| Blank gap under the text in every table row | Set cell paragraphs' space before/after to 0; with python-docx also set the Normal style's spacing to 0 |
 | AI process wording in output | Remove "根据用户要求", "AI 生成", etc. |
 | Overusing highlights | Light blue only, max 20%, never bold+highlight |
 | Wrong font for numbers | Use Times New Roman for English/digits/variables |
